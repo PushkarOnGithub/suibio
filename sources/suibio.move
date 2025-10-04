@@ -1,5 +1,5 @@
 module suibio::suibio {
-    use sui::tx_context::{Self, TxContext};
+    use sui::tx_context::{Self};
     use sui::object::{Self, UID};
     use sui::transfer;
     use std::string::{Self, String};
@@ -7,10 +7,10 @@ module suibio::suibio {
     use sui::display;
 
     /// The OTW for the package
-    struct SUIBIO has drop {}
+    public struct SUIBIO has drop {}
 
     /// The Profile object
-    struct Profile has key, store {
+    public struct Profile has key, store {
         id: UID,
         name: String,
         bio: String,
@@ -19,7 +19,7 @@ module suibio::suibio {
     }
 
     /// Events
-    struct ProfileCreated has copy, drop {
+    public struct ProfileCreated has copy, drop {
         id: object::ID,
         owner: address,
     }
@@ -44,7 +44,7 @@ module suibio::suibio {
             string::utf8(b"https://suibio.com/{id}"),
         ];
 
-        let display = display::new_with_fields<Profile>(
+        let mut display = display::new_with_fields<Profile>(
             &publisher, keys, values, ctx
         );
         display::update_version(&mut display);
