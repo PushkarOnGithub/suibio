@@ -183,18 +183,33 @@ export default function ProfileManager() {
           <h2 className="text-3xl mb-2 glow-text">{profile.name}</h2>
           <p className="text-cyan-200/70 mb-8 italic">"{profile.bio}"</p>
 
-          <div className="flex flex-col gap-4 mb-8">
-            {profile.links.map((link, i) => (
-              <a 
-                key={i} 
-                href={link.startsWith('http') ? link : `https://${link}`} 
-                target="_blank" 
-                className="flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all group"
-              >
-                <span className="truncate">{link}</span>
-                <LucideExternalLink size={18} className="text-cyan-500 group-hover:translate-x-1 transition-transform" />
-              </a>
-            ))}
+          <div className="flex flex-col gap-2 mb-10">
+            {profile.links.map((link, i) => {
+              const url = link.startsWith('http') ? link : `https://${link}`;
+              let title = link.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
+              
+              return (
+                <a 
+                  key={i} 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="link-card link-stagger"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <div className="flex items-center">
+                    <div className="link-icon-box">
+                      <LucideExternalLink size={20} />
+                    </div>
+                    <div className="link-card-content text-left">
+                      <span className="link-title">{title}</span>
+                      <span className="link-url">{url}</span>
+                    </div>
+                  </div>
+                  <LucideExternalLink size={16} className="text-white/20" />
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex gap-4 justify-center">

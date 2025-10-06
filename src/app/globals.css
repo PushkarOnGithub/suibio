@@ -160,9 +160,9 @@ h1, h2, h3, .orbitron {
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 .p-1 { padding: 0.25rem; }
 .p-4 { padding: 1rem; }
-.max-w-2xl { max-w: 42rem; }
-.max-w-6xl { max-w: 72rem; }
-.max-w-md { max-w: 28rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-6xl { max-width: 72rem; }
+.max-w-md { max-width: 28rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .text-center { text-align: center; }
 .text-xs { font-size: 0.75rem; }
@@ -228,4 +228,91 @@ h1, h2, h3, .orbitron {
   background: var(--primary) !important;
   color: #000 !important;
   transform: scale(1.05) !important;
+}
+
+/* Link Card Styles */
+.link-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: white;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--primary);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.link-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  transform: translateX(8px) scale(1.02);
+  box-shadow: -10px 0 20px rgba(0, 242, 174, 0.1);
+}
+
+.link-card:hover::before {
+  opacity: 1;
+  width: 6px;
+  box-shadow: 0 0 15px var(--primary);
+}
+
+.link-icon-box {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 242, 174, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: var(--primary);
+  border: 1px solid rgba(0, 242, 174, 0.2);
+}
+
+.link-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.link-title {
+  font-family: var(--font-orbitron);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.link-url {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-inter);
+}
+
+/* Animations for Links */
+.link-stagger {
+  opacity: 0;
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
