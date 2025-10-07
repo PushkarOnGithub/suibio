@@ -9,6 +9,7 @@ import {
 import { Transaction } from '@mysten/sui/transactions';
 import { useEffect, useState } from 'react';
 import { LucideExternalLink, LucidePlus, LucideEdit, LucideUser, LucideDollarSign, LucideSave, LucideX } from 'lucide-react';
+import { SuiName } from './SuiName';
 
 const PACKAGE_ID = process.env.NEXT_PUBLIC_PACKAGE_ID;
 
@@ -180,7 +181,11 @@ export default function ProfileManager() {
             </div>
           </div>
 
-          <h2 className="text-3xl mb-2 glow-text">{profile.name}</h2>
+          <h2 className="text-3xl mb-1 glow-text">{profile.name}</h2>
+          <div className="text-xs uppercase tracking-widest text-cyan-500/50 mb-6 flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+            <SuiName address={profile.owner} />
+          </div>
           <p className="text-cyan-200/70 mb-8 italic">"{profile.bio}"</p>
 
           <div className="flex flex-col gap-2 mb-10">

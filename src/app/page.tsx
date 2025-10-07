@@ -1,8 +1,11 @@
 'use client';
 import ProfileManager from '@/components/ProfileManager';
-import { ConnectButton } from '@mysten/dapp-kit';
+import { ConnectButton, useCurrentAccount } from '@mysten/dapp-kit';
+import { SuiName } from '@/components/SuiName';
 
 export default function Home() {
+  const account = useCurrentAccount();
+
   return (
     <main className="min-h-screen relative p-4 md:p-10">
       {/* Decorative Grid */}
@@ -18,7 +21,16 @@ export default function Home() {
             SUI<span className="text-cyan-500">BIO</span>
           </h1>
         </div>
-        <ConnectButton />
+        
+        <div className="flex items-center gap-4">
+          {account && (
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-cyan-900/30 border border-cyan-500/30 rounded-full">
+              <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+              <SuiName address={account.address} className="text-xs font-bold orbitron tracking-wider text-cyan-400" />
+            </div>
+          )}
+          <ConnectButton />
+        </div>
       </header>
 
       {/* Main Content */}
