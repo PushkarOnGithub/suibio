@@ -2,7 +2,7 @@
 
 Sui-Bio is a futuristic, decentralized profile management system built on the **Sui Network**. It allows users to mint their own on-chain "neural identity" (biography and social links) and displays human-readable **SuiNS** names for a premium user experience.
 
-![Sui-Bio Interface](public/og-image.png) *(Note: Placeholder for actual screenshot)*
+![Sui-Bio Interface](public/og-image.png)
 
 ## 🚀 Features
 
